@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/1um1n0517y01/natours#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
