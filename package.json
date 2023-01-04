@@ -7,6 +7,9 @@
     "start:dev": "nodemon server",
     "start:prod": "SET NODE_ENV=production&&nodemon server"
   },
+  "engines": {
+    "node": ">=8.3.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/1um1n0517y01/natours.git"
@@ -23,6 +26,15 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "eslint": "^8.31.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.11",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.1"
   }
 }
