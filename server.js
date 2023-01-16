@@ -18,10 +18,12 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
+    // eslint-disable-next-line no-console
     console.log('DB connection successful!');
   });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
   console.log(`App running on port ${PORT}...`);
 });
