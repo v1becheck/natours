@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
+const validator = require('validator');
 
 const tourSchema = new mongoose.Schema(
   {
@@ -10,6 +11,7 @@ const tourSchema = new mongoose.Schema(
       trim: true,
       maxLength: [40, 'A tour name can not have more than 40 characters'],
       minLength: [10, 'A tour name can not have less than 10 characters'],
+      // validate: [validator.isAlpha, 'A tour name must only conatain letters'],
     },
     slug: String,
     duration: {
@@ -41,6 +43,14 @@ const tourSchema = new mongoose.Schema(
     price: { type: Number, required: [true, 'A tour must have a price'] },
     priceDiscount: {
       type: Number,
+      validate: {
+        validator: function (val) {
+          //Works only for create, not update documents - this only points to current doc on NEW document creation
+          return val < this.price;
+        },
+        message:
+          'Discount price ({VALUE}) must be lower than the regular price',
+      },
     },
     summary: {
       type: String,
@@ -81,7 +91,7 @@ tourSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7;
 });
 
-// DOCUMENT MIDDLEWARE: runs before .save() and .create()
+// DOCUMENT MIDDLEWARE: runs before .save() and .create(), not update()
 tourSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
   next();
