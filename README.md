@@ -4,7 +4,7 @@ Tourism web application.
 
 --------------
 
--Serverless CRUD operations with MongoDB on the Atlas platform.<br>
+-CRUD operations with MongoDB on the Atlas platform.<br>
 -RESTful API design with advanced features (filtering, sorting, aliasing, pagination).<br> 
 -Server-side website rendering (HTML) with Pug templates.<br>
 -MongoDB: geospatial queries, aggregation pipeline, and operators.<br>
