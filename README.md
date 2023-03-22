@@ -4,7 +4,7 @@ Tourism web application.
 
 --------------
 
--Serverless CRUD operations with MongoDB on the Atlas platform (in the cloud).<br>
+-Serverless CRUD operations with MongoDB on the Atlas platform.<br>
 -RESTful API design with advanced features (filtering, sorting, aliasing, pagination).<br> 
 -Server-side website rendering (HTML) with Pug templates.<br>
 -MongoDB: geospatial queries, aggregation pipeline, and operators.<br>
@@ -15,8 +15,8 @@ Tourism web application.
 -Security: best practices, encryption, sanitization, rate limiting, etc.<br>
 -Accepting credit card payments with Stripe: Complete integration on the back-end and front-end.<br>
 -Uploading files and image processing.<br>
--Sending emails with Mailtrap and Sendgrid<br>
--Advanced error handling workflows
+-Sending emails with Mailtrap and Sendgrid.<br>
+-Advanced error handling workflows.
 
 -------------
 Tech stack:<br>
