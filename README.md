@@ -3,6 +3,14 @@
 Tourism web application.
 
 --------------
+Tech stack:<br>
+Node.js.<br>
+Express<br>
+MongoDB<br>
+MongoDB Atlas<br>
+RESTful API<br>
+
+-------------
 
 -CRUD operations with MongoDB on the Atlas platform (in the cloud).<br>
 -RESTful API design with advanced features (filtering, sorting, aliasing, pagination).<br> 
@@ -17,11 +25,3 @@ Tourism web application.
 -Uploading files and image processing.<br>
 -Sending emails with Mailtrap and Sendgrid.<br>
 -Advanced error handling workflows.
-
--------------
-Tech stack:<br>
-Node.js.<br>
-Express<br>
-MongoDB<br>
-MongoDB Atlas<br>
-RESTful API<br>
