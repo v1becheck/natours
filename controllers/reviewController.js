@@ -3,10 +3,12 @@ const APIFeatures = require('../utils/apiFeatures');
 const catchAsync = require('../utils/catchAsync');
 
 exports.getAllReviews = catchAsync(async (req, res, next) => {
-  //EXECUTE QUERY
-  const features = new APIFeatures(Review.find(), req.query).sort().paginate();
+  //Filter queries with tourId in the route
+  let filter = {};
+  if (req.params.tourId) filter = { tour: req.params.tourId };
 
-  const reviews = await features.query;
+  //EXECUTE QUERY
+  const reviews = await Review.find(filter);
 
   //SEND RESPONSE
   res.status(200).json({
