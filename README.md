@@ -3,7 +3,7 @@
 Tourism web application.
 
 --------------
-Tech stack:<br>
+***Tech stack:***<br>
 Node.js.<br>
 Express<br>
 MongoDB<br>
@@ -12,7 +12,7 @@ RESTful API<br>
 
 -------------
 
-Includes:
+***Includes:***<br>
 -CRUD operations with MongoDB on the Atlas platform (in the cloud).<br>
 -RESTful API design with advanced features (filtering, sorting, aliasing, pagination).<br> 
 -Server-side website rendering (HTML) with Pug templates.<br>
