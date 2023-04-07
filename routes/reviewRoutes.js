@@ -15,11 +15,17 @@ router
   .post(
     authController.protect,
     authController.restrictTo('user'),
+    reviewController.setTouruserIds,
     reviewController.createReview
   );
 
 router
   .route('/:id')
+  .patch(
+    authController.protect,
+    authController.restrictTo('admin', 'lead-guide'),
+    reviewController.updateReview
+  )
   .delete(
     authController.protect,
     authController.restrictTo('admin', 'lead-guide'),
