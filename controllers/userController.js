@@ -11,6 +11,12 @@ const filterObj = (obj, ...allowedFields) => {
   return newObj;
 };
 
+// /me endpoint middleware
+exports.getMe = (req, res, next) => {
+  req.params.id = req.user.id;
+  next();
+};
+
 exports.updateCurrentUser = catchAsync(async (req, res, next) => {
   // 1. Create error if user posts password data
   if (req.body.password || req.body.passwordConfirm)
