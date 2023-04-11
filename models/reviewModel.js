@@ -52,7 +52,7 @@ reviewSchema.pre(/^find/, function (next) {
   next();
 });
 
-//Schema static method for calculating average ratings
+// Schema static method for calculating average ratings of Tours
 reviewSchema.statics.calcAverageRatings = async function (tourId) {
   const stats = await this.aggregate([
     {
@@ -76,7 +76,7 @@ reviewSchema.statics.calcAverageRatings = async function (tourId) {
   });
 };
 
-// Executing calcAverageRatings; post middleware does not get access to next()
+// Executing calcAverageRatings for Tour after a new Review is created; post middleware does not get access to next()
 reviewSchema.post('save', function () {
   // this points to current review, constructor creates Review model
   this.constructor.calcAverageRatings(this.tour);
