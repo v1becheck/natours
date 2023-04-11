@@ -118,6 +118,8 @@ const tourSchema = new mongoose.Schema(
 tourSchema.index({ price: 1, ragingAverage: -1 });
 // Sorting Index for slug in ascending order
 tourSchema.index({ slug: 1 });
+// startLocation should be indexed to 2dsphere, necessary for geospatial location
+tourSchema.index({ startLocation: '2dsphere' });
 
 tourSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7;
