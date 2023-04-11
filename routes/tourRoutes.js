@@ -23,6 +23,14 @@ router
     tourController.getMonthlyPlan
   );
 
+// Geospatial query for getting distance of Tour locations from :latlng in :unit
+router
+  .route('/tours-within/:distance/center/:latlng/unit/:unit')
+  .get(tourController.getToursWithin);
+
+// Geospatial query for getting Tour location distance from the :latlng parameter
+router.route('/distances/:latlng/unit/:unit').get(tourController.getDistances);
+
 router
   .route('/')
   .get(tourController.getAllTours)

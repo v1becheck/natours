@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const Tour = require('./tourModel');
+const catchAsync = require('../utils/catchAsync');
 
 const reviewSchema = new mongoose.Schema(
   {
@@ -33,6 +35,9 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
+// Preventing duplicate reviews; Each user and tour combination needs to be unique
+reviewSchema.index({ tour: 1, user: 1 }, { unique: true });
+
 //QUERY MIDDLEWARE - for all queries that start with 'find'
 reviewSchema.pre(/^find/, function (next) {
   //   this.populate({
@@ -48,6 +53,55 @@ reviewSchema.pre(/^find/, function (next) {
     select: 'name photo',
   });
   next();
+});
+
+// Schema static method for calculating average ratings of Tours
+reviewSchema.statics.calcAverageRatings = async function (tourId) {
+  const stats = await this.aggregate([
+    {
+      $match: {
+        tour: tourId,
+      },
+    },
+    {
+      $group: {
+        _id: '$tour',
+        nRating: { $sum: 1 },
+        avgRating: { $avg: '$rating' },
+      },
+    },
+  ]);
+  // console.log(stats);
+
+  if (stats.length > 0) {
+    await Tour.findByIdAndUpdate(tourId, {
+      ratingsQuantity: stats[0].nRating,
+      ratingsAverage: stats[0].avgRating,
+    });
+  } else {
+    await Tour.findByIdAndUpdate(tourId, {
+      ratingsQuantity: 0,
+      ratingsAverage: 4.5,
+    });
+  }
+};
+
+// Executing calcAverageRatings for Tour after a new Review is created; post middleware does not get access to next()
+reviewSchema.post('save', function () {
+  // this points to current review, constructor creates Review model
+  this.constructor.calcAverageRatings(this.tour);
+});
+
+// this keyword of the findOneAndUpdate/Delete points to the query, not the document
+reviewSchema.pre(/^findOneAnd/, async function (next) {
+  // Passing the Review document data into the this.r so that we can use it in the post middleware to get tour ID
+  this.r = await this.findOne();
+  // console.log(this.r);
+  next();
+});
+
+reviewSchema.post(/^findOneAnd/, async function () {
+  await this.r.constructor.calcAverageRatings(this.r.tour);
 });
 
 const Review = mongoose.model('Review', reviewSchema);

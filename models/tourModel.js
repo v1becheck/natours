@@ -36,6 +36,7 @@ const tourSchema = new mongoose.Schema(
       default: 4.5,
       min: [1, 'Rating must be above 1.0'],
       max: [5, 'Rating must be below 5.0'],
+      set: (val) => Math.round(val * 10) / 10,
     },
     ratingsQuantity: {
       type: Number,
@@ -113,6 +114,13 @@ const tourSchema = new mongoose.Schema(
   }
 );
 
+// Compound Sorting Index for price in ascending order and ragingAverage in descending order
+tourSchema.index({ price: 1, ragingAverage: -1 });
+// Sorting Index for slug in ascending order
+tourSchema.index({ slug: 1 });
+// startLocation should be indexed to 2dsphere, necessary for geospatial location
+tourSchema.index({ startLocation: '2dsphere' });
+
 tourSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7;
 });
@@ -170,11 +178,11 @@ tourSchema.post(/^find/, function (docs, next) {
   next();
 });
 
-// AGGREGATION MIDDLEWARE
-tourSchema.pre('aggregate', function (next) {
-  this._pipeline.unshift({ $match: { secretTour: { $ne: true } } });
-  next();
-});
+// AGGREGATION MIDDLEWARE - Disabled since $geoNear needs to be the first stage in a pipeline
+// tourSchema.pre('aggregate', function (next) {
+//   this._pipeline.unshift({ $match: { secretTour: { $ne: true } } });
+//   next();
+// });
 
 const Tour = mongoose.model('Tour', tourSchema);
 
