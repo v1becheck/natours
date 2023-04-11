@@ -35,6 +35,9 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
+// Preventing duplicate reviews; Each user and tour combination needs to be unique
+reviewSchema.index({ tour: 1, user: 1 }, { unique: true });
+
 //QUERY MIDDLEWARE - for all queries that start with 'find'
 reviewSchema.pre(/^find/, function (next) {
   //   this.populate({
