@@ -28,6 +28,4 @@ RESTful API<br>
 -Advanced error handling workflows.<br>
 
 -------------
-***API Documentation***<br>
-
-https://documenter.getpostman.com/view/14588037/2s93Xu3m1u
+***API Documentation:*** https://documenter.getpostman.com/view/14588037/2s93Xu3m1u
