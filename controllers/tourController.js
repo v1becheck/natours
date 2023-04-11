@@ -101,7 +101,7 @@ exports.getMonthlyPlan = catchAsync(async (req, res, next) => {
 
 // /tours-within/:distance/center/:latlng/unit/:unit
 // /tours-within/500/center/-118.65234375000001,37.50972584293751/unit/mi
-// Geospatial query: Finding Tours within radious
+// Geospatial query: Finding Tours within radius
 exports.getToursWithin = catchAsync(async (req, res, next) => {
   const { distance, latlng, unit } = req.params;
   const [lat, lng] = latlng.split(',');
