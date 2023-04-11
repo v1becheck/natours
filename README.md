@@ -25,4 +25,9 @@ RESTful API<br>
 -Accepting credit card payments with Stripe: Complete integration on the back-end and front-end.<br>
 -Uploading files and image processing.<br>
 -Sending emails with Mailtrap and Sendgrid.<br>
--Advanced error handling workflows.
+-Advanced error handling workflows.<br>
+
+-------------
+***API Documentation***<br>
+
+https://documenter.getpostman.com/view/14588037/2s93Xu3m1u
