@@ -70,16 +70,35 @@ reviewSchema.statics.calcAverageRatings = async function (tourId) {
   ]);
   // console.log(stats);
 
-  await Tour.findByIdAndUpdate(tourId, {
-    ratingsQuantity: stats[0].nRating,
-    ratingsAverage: stats[0].avgRating,
-  });
+  if (stats.length > 0) {
+    await Tour.findByIdAndUpdate(tourId, {
+      ratingsQuantity: stats[0].nRating,
+      ratingsAverage: stats[0].avgRating,
+    });
+  } else {
+    await Tour.findByIdAndUpdate(tourId, {
+      ratingsQuantity: 0,
+      ratingsAverage: 4.5,
+    });
+  }
 };
 
 // Executing calcAverageRatings for Tour after a new Review is created; post middleware does not get access to next()
 reviewSchema.post('save', function () {
   // this points to current review, constructor creates Review model
   this.constructor.calcAverageRatings(this.tour);
+});
+
+// this keyword of the findOneAndUpdate/Delete points to the query, not the document
+reviewSchema.pre(/^findOneAnd/, async function (next) {
+  // Passing the Review document data into the this.r so that we can use it in the post middleware to get tour ID
+  this.r = await this.findOne();
+  // console.log(this.r);
+  next();
+});
+
+reviewSchema.post(/^findOneAnd/, async function () {
+  await this.r.constructor.calcAverageRatings(this.r.tour);
 });
 
 const Review = mongoose.model('Review', reviewSchema);
