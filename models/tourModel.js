@@ -178,11 +178,11 @@ tourSchema.post(/^find/, function (docs, next) {
   next();
 });
 
-// AGGREGATION MIDDLEWARE
-tourSchema.pre('aggregate', function (next) {
-  this._pipeline.unshift({ $match: { secretTour: { $ne: true } } });
-  next();
-});
+// AGGREGATION MIDDLEWARE - Disabled since $geoNear needs to be the first stage in a pipeline
+// tourSchema.pre('aggregate', function (next) {
+//   this._pipeline.unshift({ $match: { secretTour: { $ne: true } } });
+//   next();
+// });
 
 const Tour = mongoose.model('Tour', tourSchema);
 
