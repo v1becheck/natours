@@ -1,1 +1,17 @@
-h1 The Park Camper
+doctype html 
+html 
+  head 
+    title Natours | #{tour}
+    link(rel='stylesheet' href='css/style.css')
+    link(rel='shortcut icon' type='image/png' href='img/favicon.png')
+    
+  body 
+    h1= tour
+    h2= user.toUpperCase()
+    // HTML Comment, Will be visible in the HTML file as comment
+    //- Pug Comment
+
+    - const x = 9; //-How to use JS code in pug
+    h2= 2 * x
+    p Some text
+    
