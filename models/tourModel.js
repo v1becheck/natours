@@ -164,6 +164,7 @@ tourSchema.pre(/^find/, function (next) {
   next();
 });
 
+// Auto populate the Tour with guides from the Users
 tourSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'guides',
