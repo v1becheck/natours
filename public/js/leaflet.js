@@ -10,7 +10,6 @@ const map = L.map('map', { zoomControl: false });
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution:
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  crossOrigin: '',
 }).addTo(map);
 
 // Create icon using the image provided by Jonas
