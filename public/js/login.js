@@ -34,7 +34,6 @@ export const logout = async () => {
     });
 
     // Reload to home page after logout
-    console.log(res.data.status);
     if (res.data.status === 'success') location.reload(true);
   } catch (err) {
     showAlert('error', 'Error logging out! Try again.');
