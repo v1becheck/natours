@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "targets": {
+    "main": false
+  },
+  "browserslist": "last 2 versions",
   "scripts": {
     "start": "nodemon server",
     "start:prod": "SET NODE_ENV=production&&nodemon server",
+    "build": "parcel build ./public/js/index.js --dist-dir ./public/js/bundled",
+    "watch:js": "parcel watch --no-hmr ./public/js/index.js --dist-dir ./public/js/bundled",
     "debug": "ndb server.js"
   },
   "engines": {
@@ -22,6 +28,7 @@
   },
   "homepage": "https://github.com/1um1n0517y01/natours#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
@@ -40,6 +47,7 @@
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
+    "buffer": "^5.7.1",
     "eslint": "^8.31.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.6.0",
@@ -50,6 +58,7 @@
     "eslint-plugin-react": "^7.31.11",
     "ndb": "^1.1.5",
     "nodemon": "^2.0.20",
+    "parcel": "^2.8.3",
     "prettier": "^2.8.1"
   }
 }
