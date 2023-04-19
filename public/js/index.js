@@ -2,11 +2,12 @@
 // import '@babel/polyfill';
 // import 'core-js/stable';
 // import 'regenerator-runtime';
-import { login } from './login';
+import { login, logout } from './login';
 import { displayMap } from './leaflet';
 
 const map = document.getElementById('map');
 const loginForm = document.querySelector('.form');
+const logoutBtn = document.querySelector('.nav__el--logout');
 
 // Get locations from HTML
 if (map) {
@@ -22,3 +23,5 @@ if (loginForm) {
     login(email, password);
   });
 }
+
+if (logoutBtn) logoutBtn.addEventListener('click', logout);

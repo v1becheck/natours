@@ -67,6 +67,14 @@ exports.login = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, res);
 });
 
+exports.logout = (req, res, next) => {
+  res.cookie('jwt', null, {
+    expires: new Date(Date.now() - 10 * 1000),
+    httpOnly: true,
+  });
+  res.status(200).json({ status: 'success' });
+};
+
 exports.protect = catchAsync(async (req, res, next) => {
   // 1. Getting token and checking if it exists
   let token;
@@ -107,6 +115,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 // Only for rendered pages, no errors!
 exports.isLoggedIn = catchAsync(async (req, res, next) => {
   const token = req.cookies.jwt;
+  if (!token) return next();
   if (token) {
     // 1. Verify the token
     const decoded = await jwt.verify(token, process.env.JWT_SECRET);
@@ -124,8 +133,6 @@ exports.isLoggedIn = catchAsync(async (req, res, next) => {
     res.locals.user = currentUser;
     return next();
   }
-  // Continue with middleware in case there is no token
-  next();
 });
 
 exports.restrictTo =
