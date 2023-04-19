@@ -10,8 +10,8 @@
   "scripts": {
     "start": "nodemon server",
     "start:prod": "SET NODE_ENV=production&&nodemon server",
-    "build": "parcel build ./public/js/index.js --dist-dir ./public/js/bundled",
     "watch:js": "parcel watch --no-hmr ./public/js/index.js --dist-dir ./public/js/bundled",
+    "build": "parcel build ./public/js/index.js --dist-dir ./public/js/bundled",
     "debug": "ndb server.js"
   },
   "engines": {
