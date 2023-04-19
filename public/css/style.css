@@ -561,7 +561,13 @@ body {
 }
 
 .mapboxgl-popup {
-  max-width: 25rem;
+  max-width: 18rem;
+}
+
+.mapPopup {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.4rem;
 }
 
 .mapboxgl-popup-content {
