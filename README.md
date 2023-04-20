@@ -1,6 +1,8 @@
 # natours
 
-Tourism web application.
+Tourism web application.<br>
+Live Beta: https://natours-ieps.onrender.com/<br>
+***Site in development. Use 'admin @ natours.io' (without spaces) and 'test1234' to login. Server may take time to start and may be slow to respond.***
 
 --------------
 ***Tech stack:***<br>
