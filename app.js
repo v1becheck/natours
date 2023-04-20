@@ -88,6 +88,8 @@ app.use('/api', limiter);
 
 // Body parser, reading data from the body into req.body
 app.use(express.json({ limit: '10kb' }));
+// Required for submiting forms via url
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 // Cookie Parser
 app.use(cookieParser());
 
