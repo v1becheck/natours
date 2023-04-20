@@ -14,12 +14,12 @@ export const login = async (email, password) => {
       },
     });
 
-    // Reload to home page after 1.5 sec
+    // Reload to home page after 1.3 sec
     if (res.data.status === 'success') {
       showAlert('success', 'Logged in successfully!');
       window.setTimeout(() => {
         location.assign('/');
-      }, 1500);
+      }, 1300);
     }
   } catch (err) {
     showAlert('error', err.response.data.message);
@@ -34,7 +34,6 @@ export const logout = async () => {
     });
 
     // Reload to home page after logout
-    console.log(res.data.status);
     if (res.data.status === 'success') location.reload(true);
   } catch (err) {
     showAlert('error', 'Error logging out! Try again.');
