@@ -21,19 +21,19 @@ if (map) {
 if (loginForm) {
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    document.querySelector('.btn--save-password').textContent = 'Logging in...';
-    document.querySelector('.btn--save-password').style['opacity'] = 0.6;
-    document.querySelector('.btn--save-password').style['cursor'] = 'auto';
-    document.querySelector('.btn--save-password').disabled = true;
+    document.querySelector('.btn--login').textContent = 'Logging in...';
+    document.querySelector('.btn--login').style['opacity'] = 0.6;
+    document.querySelector('.btn--login').style['cursor'] = 'auto';
+    document.querySelector('.btn--login').disabled = true;
 
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     await login(email, password);
 
-    document.querySelector('.btn--save-password').textContent = 'Log In';
-    document.querySelector('.btn--save-password').style['opacity'] = 1;
-    document.querySelector('.btn--save-password').style['cursor'] = 'pointer';
-    document.querySelector('.btn--save-password').disabled = false;
+    document.querySelector('.btn--login').textContent = 'Log In';
+    document.querySelector('.btn--login').style['opacity'] = 1;
+    document.querySelector('.btn--login').style['cursor'] = 'pointer';
+    document.querySelector('.btn--login').disabled = false;
   });
 }
 
