@@ -19,7 +19,7 @@ if (map) {
 }
 
 if (loginForm) {
-  loginForm.addEventListener('submit', (e) => {
+  loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     document.querySelector('.btn--save-password').textContent = 'Logging in...';
     document.querySelector('.btn--save-password').style['opacity'] = 0.6;
@@ -28,7 +28,7 @@ if (loginForm) {
 
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    login(email, password);
+    await login(email, password);
 
     document.querySelector('.btn--save-password').textContent = 'Log In';
     document.querySelector('.btn--save-password').style['opacity'] = 1;
