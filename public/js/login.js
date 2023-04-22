@@ -34,7 +34,7 @@ export const logout = async () => {
     });
 
     // Reload to home page after logout
-    if (res.data.status === 'success') location.reload(true);
+    if (res.data.status === 'success') location.assign('/');
   } catch (err) {
     showAlert('error', 'Error logging out! Try again.');
   }
