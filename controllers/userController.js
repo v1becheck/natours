@@ -43,7 +43,7 @@ const upload = multer({
 exports.resizeUserPhoto = (req, res, next) => {
   if (!req.file) return next();
 
-  req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
+  req.file.filename = `user-${req.user.id}.jpeg`;
 
   // Resize the image, format it, compress and save it to the disk
   sharp(req.file.buffer)
