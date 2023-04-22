@@ -1,7 +1,42 @@
+const multer = require('multer');
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const factory = require('./handlerFactory');
+
+// Multer configuration for storage
+const multerStorage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, 'public/img/users');
+  },
+  filename: (req, file, callback) => {
+    // user-id-timestamp.jpeg
+    const extension = file.mimetype.split('/')[1];
+    callback(null, `user-${req.user.id}-${Date.now()}.${extension}`);
+  },
+});
+
+// Multer configuration for filtering
+const multerFilter = (req, file, callback) => {
+  // Filtering if file is an image
+  if (file.mimetype.startsWith('image')) {
+    callback(null, true);
+  } else {
+    callback(
+      new AppError('File is not an image! Please upload only images!', 404),
+      false
+    );
+  }
+};
+
+// Profile image uploads middleware definition
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+
+// Image middleware
+exports.uploadUserPhoto = upload.single('photo');
 
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
