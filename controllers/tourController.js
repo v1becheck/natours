@@ -1,3 +1,5 @@
+const multer = require('multer');
+const sharp = require('sharp');
 const Tour = require('../models/tourModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
@@ -6,6 +8,39 @@ const factory = require('./handlerFactory');
 // const tours = JSON.parse(
 //   fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
 // );
+
+// Saving image just to memory buffer so we can resize it afterwards, skipping the saving image to the disk
+const multerStorage = multer.memoryStorage();
+
+// Multer configuration for filtering
+const multerFilter = (req, file, callback) => {
+  // Filtering if file is an image
+  if (file.mimetype.startsWith('image')) {
+    callback(null, true);
+  } else {
+    callback(
+      new AppError('File is not an image! Please upload only images!', 404),
+      false
+    );
+  }
+};
+
+// Profile image uploads middleware definition
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+
+// Upload Tour images middleware (multiple images)
+exports.uploadTourImages = upload.fields([
+  { name: 'imageCover', maxCount: 1 },
+  { name: 'images', maxCount: 3 },
+]);
+
+exports.resizeTourImages = (req, res, next) => {
+  console.log(req.files);
+  next();
+};
 
 exports.aliasTopTours = (req, res, next) => {
   req.query.limit = '5';
