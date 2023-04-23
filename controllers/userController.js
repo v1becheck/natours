@@ -40,20 +40,20 @@ const upload = multer({
 });
 
 // sharp middleware for resizing images before upload
-exports.resizeUserPhoto = (req, res, next) => {
+exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   if (!req.file) return next();
 
   req.file.filename = `user-${req.user.id}.jpeg`;
 
   // Resize the image, format it, compress and save it to the disk
-  sharp(req.file.buffer)
+  await sharp(req.file.buffer)
     .resize(500, 500)
     .toFormat('jpeg')
     .jpeg({ quality: 90 })
     .toFile(`public/img/users/${req.file.filename}`);
 
   next();
-};
+});
 
 // Image middleware
 exports.uploadUserPhoto = upload.single('photo');
