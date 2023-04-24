@@ -33,7 +33,7 @@ bookingSchema.pre(/^find/, function (next) {
   next();
 });
 
-// Virtualy populate reviews to Tours Model from Tour Model
+// Virtualy populate - Incomplete or Wrong
 // bookingSchema.virtual('tours', {
 //   ref: 'Booking',
 //   localField: '_id',
