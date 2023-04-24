@@ -3,7 +3,26 @@
 Tourism web application.<br>
 
 Live Beta: https://natours-production-milos.up.railway.app/ <br>
-***Site in development. Use 'admin @ natours.io' (without spaces) and 'test1234' to login. Server may take time to start and may be slow to respond.***
+***Site in development. Server may take time to start and may be slow to respond.***
+
+--------------
+
+***Usage:***<br>
+Test username: monica@example.com<br>
+Test password: test1234<br>
+<br>
+Choose a tour, check details, book a tour in the lower part of the page.<br><br>
+Use dummy credit card credentials:<br><br>
+<em>Card information:</em><br>
+CC Number: 4242 4242 4242 4242<br>
+Expiry date: 06/24 CVC: 456<br>
+Name: Monica Fuentes<br>
+State: Pick one that you like<br>
+
+***Your credit card will not be charged, don't worry. :laughing:***
+
+
+
 
 --------------
 ***Tech stack:***<br>
