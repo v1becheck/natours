@@ -30,7 +30,15 @@ bookingSchema.pre(/^find/, function (next) {
     path: 'tour',
     select: 'name',
   });
+  next();
 });
+
+// Virtualy populate - Incomplete or Wrong
+// bookingSchema.virtual('tours', {
+//   ref: 'Booking',
+//   localField: '_id',
+//   foreignField: 'tour',
+// });
 
 const Booking = mongoose.model('Booking', bookingSchema);
 
