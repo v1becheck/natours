@@ -46,7 +46,7 @@ RESTful API<br>
 -Security: best practices, encryption, sanitization, rate limiting, etc.<br>
 -Accepting credit card payments with Stripe: Complete integration on the back-end and front-end.<br>
 -Uploading files and image processing.<br>
--Sending emails with Mailtrap and Sendgrid.<br>
+-Sending emails with Mailtrap and Sendinblue.<br>
 -Advanced error handling workflows.<br>
 
 -------------
