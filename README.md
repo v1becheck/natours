@@ -2,7 +2,7 @@
 
 Tourism web application.<br>
 
-Live Beta: natours-production-milos.up.railway.app/<br>
+Live Beta: https://natours-production-milos.up.railway.app/ <br>
 ***Site in development. Use 'admin @ natours.io' (without spaces) and 'test1234' to login. Server may take time to start and may be slow to respond.***
 
 --------------
