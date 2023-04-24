@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Tour = require('./tourModel');
-const catchAsync = require('../utils/catchAsync');
 
 const reviewSchema = new mongoose.Schema(
   {
@@ -71,7 +70,6 @@ reviewSchema.statics.calcAverageRatings = async function (tourId) {
       },
     },
   ]);
-  // console.log(stats);
 
   if (stats.length > 0) {
     await Tour.findByIdAndUpdate(tourId, {
@@ -96,7 +94,6 @@ reviewSchema.post('save', function () {
 reviewSchema.pre(/^findOneAnd/, async function (next) {
   // Passing the Review document data into the this.r so that we can use it in the post middleware to get tour ID
   this.r = await this.findOne();
-  // console.log(this.r);
   next();
 });
 
