@@ -20,14 +20,16 @@ style.
     mso-table-lspace: 0pt;
     mso-table-rspace: 0pt;
     width: 100%; }
-    table td {
+  table td {
       font-family: sans-serif;
       font-size: 14px;
       vertical-align: top; 
+      align:center;
   }
   .body {
     background-color: #f6f6f6;
     width: 100%; 
+    margin:0
   }
   .container {
     display: block;
@@ -186,6 +188,34 @@ style.
     border: 0;
     border-bottom: 1px solid #f6f6f6;
     margin: 20px 0; 
+  }
+
+  body, .body {
+    width: 100% !important;
+    height: 100% !important;
+    margin-left: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+  table {
+    border-collapse: collapse;
+    mso-table-lspace: 0pt;
+    mso-table-rspace: 0pt;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .container {
+    width: 100% !important;
+    max-width: 600px !important;
+    margin: 0 auto;
+    text-align: center !important;
+  }
+  .content {
+    width: 100% !important;
+    max-width: 600px !important;
+    margin: 0 auto;
+    text-align: center !important;
   }
   @media only screen and (max-width: 620px) {
     table[class=body] h1 {
