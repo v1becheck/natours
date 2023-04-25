@@ -19,7 +19,7 @@ Expiry date: 06/24 CVC: 456<br>
 Name: Monica Fuentes (or some random name)<br>
 State: Pick one that you like<br>
 
-***No one's credit card will not be charged, don't worry. :laughing:***
+***No one's credit card will be charged, don't worry. :laughing:***
 
 
 
