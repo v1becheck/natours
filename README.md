@@ -16,7 +16,7 @@ Use dummy credit card credentials:<br><br>
 <em>Card information:</em><br>
 CC Number: 4242 4242 4242 4242<br>
 Expiry date: 06/24 CVC: 456<br>
-Name: Monica Fuentes (or some random name)<br>
+Name: Monica Fuentes (or use random name)<br>
 State: Pick one that you like<br>
 
 ***No one's credit card will be charged, don't worry. :laughing:***
