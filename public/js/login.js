@@ -14,12 +14,12 @@ export const login = async (email, password) => {
       },
     });
 
-    // Reload to home page after 1.3 sec
+    // Reload to home page after .5 sec
     if (res.data.status === 'success') {
       showAlert('success', 'Logged in successfully!');
       window.setTimeout(() => {
         location.assign('/');
-      }, 1300);
+      }, 500);
     }
   } catch (err) {
     showAlert('error', err.response.data.message);
