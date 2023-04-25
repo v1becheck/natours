@@ -71,12 +71,11 @@ exports.webhookCheckout = (req, res, next) => {
       signature,
       process.env.STRIPE_WEBHOOK_SECRET
     );
+    if (event.type === 'checkout.session.completed')
+      createBookingCheckout(event.data.object);
   } catch (err) {
     return res.status(400).send(`Webhook erorr: ${err.message}`);
   }
-
-  if (event.type === 'checkout.session.completed')
-    createBookingCheckout(event.data.object);
 
   res.status(200).json({
     received: true,
