@@ -32,9 +32,15 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Implement CORS
 app.use(cors());
+// Access-Control-Allow-Origin *
+// api.natours.com, front-end natours.com
+// app.use(cors({
+//   origin: 'https://www.natours.com'
+// }))
 
 // Implement CORS for all methods (patch, delete...)
 app.options('*', cors());
+// app.options('/api/v1/tours/:id', cors());
 
 // Use if front-end is on another domain
 // app.use(
@@ -106,9 +112,9 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
-// Need it before body-parser
+// Stripe webhook, BEFORE body-parser, because stripe needs the body as stream
 app.post(
-  'webhook-checkout',
+  '/webhook-checkout',
   express.raw({ type: 'application/json' }),
   bookingController.webhookCheckout
 );

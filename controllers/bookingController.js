@@ -29,13 +29,16 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
           product_data: {
             name: `${tour.name} Tour`,
             description: tour.summary,
-            images: [`https://www.natours.dev/img/tours/${tour.imageCover}`],
+            images: [
+              `${req.protocol}://${req.get('host')}/img/tours/${
+                tour.imageCover
+              }`,
+            ],
           },
         },
       },
     ],
   });
-
   // 3. Send it to client
   res.status(200).json({
     status: 'success',
@@ -53,13 +56,13 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 //   res.redirect(req.originalUrl.split('?')[0]);
 // });
 
-const createBookingCheckout = catchAsync(async (session) => {
+const createBookingCheckout = async (session) => {
   const tour = session.client_reference_id;
-  const user = (await User.findOne({ email: session.customer_email })).id;
-  const price = session.line_items[0].price_data.unit_amount / 100;
+  const user = (await User.findOne({ email: session.customer_email }))._id;
+  const price = session.amount_total / 100;
 
   await Booking.create({ tour, user, price });
-});
+};
 
 exports.webhookCheckout = (req, res, next) => {
   const signature = req.headers['stripe-signature'];
@@ -71,15 +74,14 @@ exports.webhookCheckout = (req, res, next) => {
       signature,
       process.env.STRIPE_WEBHOOK_SECRET
     );
-    if (event.type === 'checkout.session.completed')
-      createBookingCheckout(event.data.object);
   } catch (err) {
-    return res.status(400).send(`Webhook erorr: ${err.message}`);
+    return res.status(400).send(`Webhook error: ${err.message}`);
   }
 
-  res.status(200).json({
-    received: true,
-  });
+  if (event.type === 'checkout.session.completed')
+    createBookingCheckout(event.data.object);
+
+  res.status(200).json({ received: true });
 };
 
 exports.getAllBookings = factory.getAll(Booking);
