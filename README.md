@@ -10,6 +10,7 @@ Live Beta: https://natours-production-milos.up.railway.app/ <br>
 ***Usage:***<br>
 Test username: monica@example.com<br>
 Test password: test1234<br>
+Or Sign up with your own.<br>
 <br>
 Choose a tour, check details, book a tour in the lower part of the page.<br><br>
 Use dummy credit card credentials:<br><br>
