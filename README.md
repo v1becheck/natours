@@ -2,7 +2,7 @@
 
 Tourism web application.<br>
 
-Live Beta: https://natours-production-milos.up.railway.app/ ( Railway is a paid hosting service, if it is not available my paid subscription has expired. Check alternative on Render, it is quite slower though, so prepare to be patient. It may take up to a minute for site to go online since server goes to sleep promptly due to inactivity. )<br>
+Live Beta: https://natours-production-milos.up.railway.app/ ( Railway is a paid hosting service, if it is reports 'Application failed to respond' my paid subscription has expired. Check alternative on Render, it is quite slower though, so prepare to be patient. It may take up to a minute for site to go online since server goes to sleep promptly due to inactivity. )<br>
 Alternative Live on Render: https://natours-ieps.onrender.com <br>
 ***Site in development. Server may take time to start and may be slow to respond.***
 
