@@ -16,8 +16,8 @@
     "debug": "ndb server.js"
   },
   "engines": {
-    "node": "18.16.0",
-    "npm": "9.5.1"
+    "node": ">18.x",
+    "npm": ">8.x"
   },
   "repository": {
     "type": "git",
