@@ -3,7 +3,7 @@
 Tourism web application.<br>
 
 Live Beta: https://natours-production-milos.up.railway.app/ ( If Railway reports 'Application failed to respond' check alternative on Render. )<br>
-Alternative Live on Render: https://natours-ieps.onrender.com ( Render has slow logging/siggining process, so prepare to be patient. Working on solving that with Render. ) <br>
+Alternative Live on Render: https://natours-ieps.onrender.com ( Render has slow login/signup process (~20sec), so prepare to be patient. Working on solving that with Render. ) <br>
 ***Site in development. Server may take time to start and may be slow to respond.***
 
 --------------
