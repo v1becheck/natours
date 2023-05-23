@@ -47,7 +47,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     passwordChangedAt: req.body.passwordChangedAt,
     role: req.body.role,
   });
-  const url = 'https://natours-production-milos.up.railway.app/me';
+  const url = '/me';
   await new Email(newUser, url).sendWelcome();
   createSendToken(newUser, 201, req, res);
 });
