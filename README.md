@@ -13,7 +13,7 @@ Test username: monica@example.com<br>
 Test password: test1234<br>
 Or Sign up with your own.<br>
 <br>
-Choose a tour, check details, book a tour in the lower part of the page.<br><br>
+Choose a tour, check details, book a tour in the lower part of the page. (Book Tour Now button) <br><br>
 Use dummy credit card credentials:<br><br>
 <em>Card information:</em><br>
 CC Number: 4242 4242 4242 4242 (this is a test card)<br>
