@@ -17,7 +17,7 @@ Choose a tour, check details, book a tour in the lower part of the page. (Book T
 Use dummy credit card credentials:<br><br>
 <em>Card information:</em><br>
 CC Number: 4242 4242 4242 4242 (this is a test card)<br>
-Expiry date: 06/24 CVC: 456<br> (or use random dates and numbers)
+Expiry date: 06/24 CVC: 456 (or use random dates and numbers)<br>
 Name: Monica Fuentes (or use random name)<br>
 State: Pick one that you like<br>
 
