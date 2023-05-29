@@ -1,8 +1,13 @@
 extends base
 
 block content 
-  main.main 
-    .card-container 
+  main.main
+    if (url === '/my-tours')   
+      div.heading-secondary-page-heading.ma-bt-md
+        h3 Your bookings
+    else
+    .card-container
+    
 
       each tour in tours
         .card 
