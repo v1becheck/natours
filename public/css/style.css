@@ -21,6 +21,10 @@
   box-sizing: inherit;
 }
 
+a {
+  text-decoration: none;
+}
+
 html {
   font-size: 62.5%;
   -webkit-box-sizing: border-box;
@@ -150,6 +154,27 @@ body {
   text-transform: uppercase;
   font-weight: 700;
   text-align: center;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#7dd56f),
+    to(#28b487)
+  );
+  background-image: linear-gradient(to right, #7dd56f, #28b487);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.1rem;
+  line-height: 1.3;
+  display: block;
+}
+
+.heading-secondary-lower-case {
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-align: left;
+  text-decoration: none;
   background-image: -webkit-gradient(
     linear,
     left top,
@@ -1254,6 +1279,16 @@ body {
 }
 
 .login-form {
+  margin: 0 auto;
+  max-width: 55rem;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
+  padding: 5rem 7rem;
+  border-radius: 5px;
+}
+
+.forgot-password-form {
   margin: 0 auto;
   max-width: 55rem;
   background-color: #fff;

@@ -14,10 +14,10 @@ module.exports = class Email {
     if (process.env.NODE_ENV === 'production') {
       // Sendinblue - Use https://mailsac.com/ for email development tesing
       return nodemailer.createTransport({
-        service: 'SendinBlue',
+        service: 'SendGrid',
         auth: {
-          user: process.env.SENDINBLUE_USERNAME,
-          pass: process.env.SENDINBLUE_PASSWORD,
+          user: process.env.SENDGRID_USERNAME,
+          pass: process.env.SENDGRID_PASSWORD,
         },
       });
     }

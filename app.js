@@ -160,7 +160,7 @@ app.use((req, res, next) => {
 
 // Server-side rendering routes
 app.use('/', viewRouter);
-app.use('/tour', viewRouter);
+
 // API routes
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
