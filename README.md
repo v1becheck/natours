@@ -25,7 +25,6 @@ State: Pick one that you like<br>
 
 
 
-
 --------------
 ***Tech stack:***<br>
 Node.js.<br>
