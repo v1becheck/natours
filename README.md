@@ -11,7 +11,7 @@ Alternative Live on Render: https://natours-ieps.onrender.com ( Render has slow 
 ***Usage:***<br>
 Test username: monica@example.com<br>
 Test password: test1234<br>
-Or Sign up with your own.<br>
+Or Sign up with your own (You can use mailsac.com if you dont want to use your own email).<br>
 <br>
 Choose a tour, check details, book a tour in the lower part of the page. (Book Tour Now button) <br><br>
 Use dummy credit card credentials:<br><br>
