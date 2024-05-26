@@ -79,11 +79,15 @@ app.use(
 // Development logging
 if (process.env.NODE_ENV === 'development') app.use(morgan('tiny'));
 
-// Create a write stream (in append mode)
-const accessLogStream = fs.createWriteStream(
-  path.join(__dirname, '/logs/access.log'),
-  { flags: 'a' }
-);
+// Ensure the logs directory exists
+const logDir = path.join(__dirname, 'logs');
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir);
+}
+
+// Create a write stream (in append mode) for the access log
+const accessLogPath = path.join(logDir, 'access.log');
+const accessLogStream = fs.createWriteStream(accessLogPath, { flags: 'a' });
 
 // Production logging
 if (process.env.NODE_ENV === 'production')
