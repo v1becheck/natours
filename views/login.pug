@@ -7,9 +7,12 @@ block content
       form.form.form--login
         .form__group
           label.form__label(for='email') Email address
-          input#email.form__input(type='email', placeholder='you@example.com', required)
+          input#email.form__input(type='email', placeholder='you@example.com', value='monica@example.com' required)
         .form__group.ma-bt-md
           label.form__label(for='password') Password
-          input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+          input#password.form__input(type='password', placeholder='••••••••', value='test1234' required, minlength='8')
+        .form__group
+          label.form__label.login-text(for='remember', style='font-style: italic;') ** Just click login to use these test credentials to login so you don't need to create an account **
         .form__group
           button.btn.btn--green.btn--login Login
+        
