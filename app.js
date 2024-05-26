@@ -76,7 +76,10 @@ app.use(
 );
 
 // Development logging
-if (process.env.NODE_ENV === 'development') app.use(morgan('tiny'));
+// if (process.env.NODE_ENV === 'development') app.use(morgan('tiny'));
+
+// Production logging
+app.use(morgan('tiny'));
 
 // Limit requests from same IP
 const limiter = rateLimit({
