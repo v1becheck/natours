@@ -4,6 +4,11 @@ const authController = require('../controllers/authController');
 
 const router = express.Router();
 
+// Auto-login on page visit
+router.get('/', authController.autoLogin, (req, res) => {
+  res.send('Welcome, you are logged in automatically!');
+});
+
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
 router.get('/logout', authController.logout);

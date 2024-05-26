@@ -2,3 +2,8 @@
 /config.env
 /.parcel-cache
 /public/js/bundled
+
+# ssl
+csr.pem
+key.pem
+cert.pem

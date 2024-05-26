@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+// const https = require('https');
+// const fs = require('fs');
 
 process.on('uncaughtException', (err) => {
   console.log(err.name, err.message);
@@ -28,6 +30,25 @@ mongoose
     // eslint-disable-next-line no-console
     console.log('DB connection successful!');
   });
+
+// Generating SelfSigned SSL for local development - (type in tereminal)
+// openssl genrsa -out key.pem 2048
+// openssl req -new -key key.pem -out csr.pem
+// openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out cert.pem
+
+// SSL Certificates
+// const sslServer = https.createServer(
+//   {
+//     key: fs.readFileSync(path.join(__dirname, 'key.pem')),
+//     cert: fs.readFileSync(path.join(__dirname, 'cert.pem')),
+//   },
+//   app
+// );
+
+// Start HTTPS server
+// sslServer.listen(5001, () => {
+//   console.log('Secure server is running on https://localhost:5001');
+// });
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => {

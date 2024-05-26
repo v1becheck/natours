@@ -231,3 +231,29 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   // 4. Log in user, send JWT
   createSendToken(user, 200, req, res);
 });
+
+// Auto-login middleware
+exports.autoLogin = catchAsync(async (req, res, next) => {
+  console.log('Auto-login middleware called'); // Log for debugging
+  const user = await User.findOne({ email: process.env.AUTO_LOGIN_EMAIL });
+  if (!user) {
+    return next(new AppError('Auto-login user does not exist', 500));
+  }
+
+  console.log(`Auto-logging in user: ${user.email}`); // Log for debugging
+
+  // Log the user in
+  const token = signToken(user._id);
+  res.cookie('jwt', token, {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+    secure: req.secure || process.env.NODE_ENV === 'production',
+  });
+
+  req.user = user;
+  res.locals.user = user;
+
+  next();
+});
