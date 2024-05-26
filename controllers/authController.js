@@ -137,6 +137,23 @@ exports.isLoggedIn = catchAsync(async (req, res, next) => {
     res.locals.user = currentUser;
     return next();
   }
+
+  // Automatically log in default user for development
+  if (process.env.NODE_ENV === 'development') {
+    const defaultUser = await User.findOne({ email: process.env.DEFAULT_USER_EMAIL });
+    if (defaultUser) {
+      const token = jwt.sign({ id: defaultUser._id }, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRES_IN,
+      });
+      
+      res.cookie('jwt', token, {
+        expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
+        httpOnly: true,
+      });
+      
+      res.locals.user = defaultUser;
+    }
+  }
 });
 
 exports.restrictTo =
