@@ -12,8 +12,8 @@
     "start:prod": "SET NODE_ENV=production&&nodemon server",
     "start:backend": "node server",
     "watch:js": "npx parcel watch --no-hmr ./public/js/index.js --dist-dir ./public/js/bundled",
-    "clean": "NODE_OPTIONS=--max-old-space-size=8192 npx parcel clean",
-    "build": "NODE_OPTIONS=--max-old-space-size=512 parcel build ./public/js/index.js --dist-dir ./public/js/bundled --no-source-maps && node server.js",
+    "clean": "npx parcel clean",
+    "build": "parcel build ./public/js/index.js --dist-dir ./public/js/bundled --no-source-maps && node server.js",
     "debug": "ndb server.js"
   },
   "engines": {
