@@ -90,13 +90,15 @@ const accessLogPath = path.join(logDir, 'access.log');
 const accessLogStream = fs.createWriteStream(accessLogPath, { flags: 'a' });
 
 // Production logging
-if (process.env.NODE_ENV === 'production')
+if (process.env.NODE_ENV === 'production') {
   app.use(
     morgan(
       ':remote-addr :method :url :status :response-time ms - :res[content-length]',
       { stream: accessLogStream }
     )
   );
+  app.use(morgan('combined'));
+}
 
 // Limit requests from same IP
 const limiter = rateLimit({
