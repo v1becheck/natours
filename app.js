@@ -9,6 +9,7 @@ const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const cors = require('cors');
+const fs = require('fs');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -76,10 +77,22 @@ app.use(
 );
 
 // Development logging
-// if (process.env.NODE_ENV === 'development') app.use(morgan('tiny'));
+if (process.env.NODE_ENV === 'development') app.use(morgan('tiny'));
+
+// Create a write stream (in append mode)
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, '/logs/access.log'),
+  { flags: 'a' }
+);
 
 // Production logging
-app.use(morgan('tiny'));
+if (process.env.NODE_ENV === 'production')
+  app.use(
+    morgan(
+      ':remote-addr :method :url :status :response-time ms - :res[content-length]',
+      { stream: accessLogStream }
+    )
+  );
 
 // Limit requests from same IP
 const limiter = rateLimit({
