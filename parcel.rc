@@ -18,5 +18,9 @@
     "browser": [
       "@parcel/runtime-js"
     ]
+  },
+  "reporters": [],
+  "workers": {
+    "maxConcurrentWorkers": 1
   }
 }

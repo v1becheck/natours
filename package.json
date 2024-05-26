@@ -13,7 +13,7 @@
     "start:backend": "node server",
     "watch:js": "npx parcel watch --no-hmr ./public/js/index.js --dist-dir ./public/js/bundled",
     "clean": "NODE_OPTIONS=--max-old-space-size=8192 npx parcel clean",
-    "build": "npm run clean && NODE_OPTIONS=--max-old-space-size=8192 npx parcel build ./public/js/index.js --dist-dir ./public/js/bundled && node server.js",
+    "build": "NODE_OPTIONS=--max-old-space-size=512 parcel build ./public/js/index.js --dist-dir ./public/js/bundled --no-source-maps && node server.js",
     "debug": "ndb server.js"
   },
   "engines": {
