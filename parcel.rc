@@ -1,0 +1,22 @@
+{
+  "extends": "@parcel/config-default",
+  "transformers": {
+    "*.js": [
+      "@parcel/transformer-babel",
+      "@parcel/transformer-js"
+    ]
+  },
+  "optimizers": {
+    "*.js": [
+      "@parcel/optimizer-terser"
+    ]
+  },
+  "namers": [
+    "@parcel/namer-default"
+  ],
+  "runtimes": {
+    "browser": [
+      "@parcel/runtime-js"
+    ]
+  }
+}
