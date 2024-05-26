@@ -1,0 +1,33 @@
+extend base
+
+block content
+  section.section-cta(style="height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; flex-direction: column;")
+    .cta
+      .cta__img.cta__img--logo
+        img(src='/img/logo-white.png', alt='Natours logo')
+      img.cta__img.cta__img--1(src='/img/tours/tour-1-1.jpg', alt='Tour picture')
+      img.cta__img.cta__img--2(src='/img/tours/tour-1-2.jpg', alt='Tour picture')
+      .cta__content
+        h2.heading-secondary Book your first tour!
+        p.cta__text= '7 days. 1 adventure. Infinite memories. Make it yours today!'
+
+        if user 
+          button.btn.btn--green.btn--pulse.span-all-rows#book-tour(data-tour-id='5c88fa8cf4afda39709c2955') Book now!
+        else 
+          a.btn.btn--green.btn--pulse.span-all-rows(href='/login') Log in to book tour!
+
+
+    section.section-cta(style="height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; flex-direction: column;")
+      .cta
+        .cta__img.cta__img--logo
+          img(src='/img/logo-white.png', alt='Natours logo')
+        img.cta__img.cta__img--1(src='/img/tours/tour-2-1.jpg', alt='Tour picture')
+        img.cta__img.cta__img--2(src='/img/tours/tour-3-2.jpg', alt='Tour picture')
+        .cta__content
+          h2.heading-secondary Or feel free to explore our other tours!
+          p.cta__text= 'Many more opportunities to blow of steam and relax!'
+
+          if user 
+            a.btn.btn--green.span-all-rows(href='/') Explore!
+          else 
+            a.btn.btn--green.span-all-rows(href='/') Log in to book tour!

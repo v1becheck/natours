@@ -324,6 +324,29 @@ body {
   outline-offset: 3px;
 }
 
+/* Pulse button */
+
+@keyframes pulse {
+  0% {
+    background-color: #28a745; /* Green */
+    box-shadow: 0 0 5px #28a745;
+  }
+  50% {
+    background-color: #17a2b8; /* Blue */
+    box-shadow: 0 0 20px #17a2b8;
+  }
+  100% {
+    background-color: #28a745; /* Green */
+    box-shadow: 0 0 5px #28a745;
+  }
+}
+
+.btn--pulse {
+  animation: pulse 2s infinite;
+}
+
+/* End pulse button */
+
 .header {
   background-color: #444;
   padding: 0 5rem;

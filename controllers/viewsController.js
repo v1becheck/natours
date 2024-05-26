@@ -50,6 +50,12 @@ exports.getSignupForm = catchAsync(async (req, res) => {
   });
 });
 
+exports.getBook = catchAsync(async (req, res) => {
+  res.status(200).render('book', {
+    title: `Book your first tour`,
+  });
+});
+
 exports.getLoginForm = catchAsync(async (req, res) => {
   res.status(200).render('login', {
     title: `Log into your account`,
