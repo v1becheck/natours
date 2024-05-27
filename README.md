@@ -26,6 +26,7 @@ Express<br>
 MongoDB<br>
 MongoDB Atlas<br>
 RESTful API<br>
+Pug<br>
 
 -------------
 
