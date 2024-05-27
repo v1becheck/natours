@@ -324,6 +324,27 @@ body {
   outline-offset: 3px;
 }
 
+/* Book sections */
+
+.section1,
+.section2,
+.section3 {
+  margin-bottom: 0;
+}
+
+.section1 {
+  margin-bottom: 70px;
+}
+
+.section2 {
+  margin-bottom: -200px;
+}
+
+.section3 {
+  margin-top: 0px;
+  margin-bottom: 00px;
+}
+
 /* Pulse button */
 
 @keyframes pulse {

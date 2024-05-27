@@ -1,3 +1,4 @@
+// index.js
 /* eslint-disable */
 // import '@babel/polyfill';
 // import 'core-js/stable';
@@ -17,18 +18,21 @@ const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.getElementById('book-tour');
 
-// Get locations from HTML
 if (map) {
-  const locations = JSON.parse(map.dataset.locations);
-  displayMap(locations);
+  try {
+    const locations = JSON.parse(map.dataset.locations);
+    displayMap(locations);
+  } catch (e) {
+    console.error('Error parsing locations:', e);
+  }
 }
 
 if (signupForm) {
   signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     document.querySelector('.btn--signup').textContent = 'Signing up...';
-    document.querySelector('.btn--signup').style['opacity'] = 0.6;
-    document.querySelector('.btn--signup').style['cursor'] = 'auto';
+    document.querySelector('.btn--signup').style.opacity = 0.6;
+    document.querySelector('.btn--signup').style.cursor = 'auto';
     document.querySelector('.btn--signup').disabled = true;
 
     const name = document.getElementById('name').value;
@@ -38,8 +42,8 @@ if (signupForm) {
     await signup(name, email, password, passwordConfirm);
 
     document.querySelector('.btn--signup').textContent = 'Log In';
-    document.querySelector('.btn--signup').style['opacity'] = 1;
-    document.querySelector('.btn--signup').style['cursor'] = 'pointer';
+    document.querySelector('.btn--signup').style.opacity = 1;
+    document.querySelector('.btn--signup').style.cursor = 'pointer';
     document.querySelector('.btn--signup').disabled = false;
   });
 }
@@ -48,8 +52,8 @@ if (loginForm) {
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     document.querySelector('.btn--login').textContent = 'Logging in...';
-    document.querySelector('.btn--login').style['opacity'] = 0.6;
-    document.querySelector('.btn--login').style['cursor'] = 'auto';
+    document.querySelector('.btn--login').style.opacity = 0.6;
+    document.querySelector('.btn--login').style.cursor = 'auto';
     document.querySelector('.btn--login').disabled = true;
 
     const email = document.getElementById('email').value;
@@ -57,8 +61,8 @@ if (loginForm) {
     await login(email, password);
 
     document.querySelector('.btn--login').textContent = 'Log In';
-    document.querySelector('.btn--login').style['opacity'] = 1;
-    document.querySelector('.btn--login').style['cursor'] = 'pointer';
+    document.querySelector('.btn--login').style.opacity = 1;
+    document.querySelector('.btn--login').style.cursor = 'pointer';
     document.querySelector('.btn--login').disabled = false;
   });
 }
@@ -80,8 +84,8 @@ if (userPasswordForm) {
   userPasswordForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     document.querySelector('.btn--save-password').textContent = 'Updating...';
-    document.querySelector('.btn--save-password').style['opacity'] = 0.6;
-    document.querySelector('.btn--save-password').style['cursor'] = 'auto';
+    document.querySelector('.btn--save-password').style.opacity = 0.6;
+    document.querySelector('.btn--save-password').style.cursor = 'auto';
     document.querySelector('.btn--save-password').disabled = true;
 
     const currentPassword = document.getElementById('password-current').value;
@@ -94,8 +98,8 @@ if (userPasswordForm) {
 
     // Clear fields after password update
     document.querySelector('.btn--save-password').textContent = 'Save Password';
-    document.querySelector('.btn--save-password').style['opacity'] = 1;
-    document.querySelector('.btn--save-password').style['cursor'] = 'pointer';
+    document.querySelector('.btn--save-password').style.opacity = 1;
+    document.querySelector('.btn--save-password').style.cursor = 'pointer';
     document.querySelector('.btn--save-password').disabled = false;
     document.getElementById('password-current').value = '';
     document.getElementById('password').value = '';
